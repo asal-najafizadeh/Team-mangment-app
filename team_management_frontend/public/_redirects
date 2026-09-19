@@ -1,0 +1,4 @@
+# برای Netlify deployment
+# همه route ها را به index.html redirect کن
+/*    /index.html   200
+

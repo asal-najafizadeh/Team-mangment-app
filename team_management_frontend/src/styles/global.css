@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* تعریف فونت Dana-Black */
+@font-face {
+  font-family: 'Dana-Black';
+  src: url('/fonts/Dana-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    direction: rtl;
+  }
+  
+  body {
+    font-family: 'Dana-Black', 'Tahoma', 'Arial', sans-serif;
+  }
+  
+  * {
+    font-family: 'Dana-Black', 'Tahoma', 'Arial', sans-serif;
+  }
+}
+
+/* کلاس برای استفاده در جاوااسکریپت (در صورت نیاز) */
+.font-dana {
+  font-family: 'Dana-Black', 'Tahoma', 'Arial', sans-serif;
+}

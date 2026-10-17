@@ -67,11 +67,11 @@ const Header = ({ onMenuClick, username, isStaff, role }) => {
           <div className="flex items-center space-x-reverse space-x-2">
             <img 
               src="/logo.png" 
-              alt="Batltazar Plus Logo" 
+              alt="Team Management" 
               className="h-10 w-10 object-contain"
             />
             <span className="hidden sm:inline text-lg font-bold text-gray-900 dark:text-white">
-              Batltazar Plus
+              Team Management
             </span>
           </div>
           <button

@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { getAccessToken, getRefreshToken, saveTokens, clearTokens } from '../utils/tokenManager';
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/';
+
 // Create axios instance with base configuration
 const axiosClient = axios.create({
-  baseURL: 'https://team-mangment-app.onrender.com/api/',
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -80,7 +83,7 @@ axiosClient.interceptors.response.use(
       try {
         // Attempt to refresh the token
         const response = await axios.post(
-          'https://team-mangment-app.onrender.com/api/auth/refresh/',
+          `${API_BASE_URL}auth/refresh/`,
           { refresh: refreshToken }
         );
 

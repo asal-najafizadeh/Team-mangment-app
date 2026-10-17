@@ -1,227 +1,131 @@
-# Team Management System - Batltazar Plus
+# Team Management System
 
-سیستم مدیریت تیم با قابلیت‌های حضور و غیاب، مدیریت تسک‌ها، گزارش‌دهی و اخطاردهی.
+A full-stack team management application with attendance tracking, task management, daily reports, warnings, calendar/leave management, and optional Telegram bot integration.
 
-آدرس مشاهده : 
+**Created and developed by Asal Najafizadeh.**
 
-https://team-mangment-app.vercel.app/
+## License
 
-اطلاعات ورود : 
+This project is released under the [MIT License](./LICENSE).
 
-user : User
+## Features
 
-password : user12345
+- User and role management
+- Tasks and team assignments
+- Daily attendance
+- Daily reporting
+- Warning system
+- Calendar and leave requests
+- Telegram bot integration (optional)
+- Dashboard UI
 
-## 🚀 ویژگی‌ها
+## Prerequisites
 
-- ✅ مدیریت کاربران و نقش‌ها
-- ✅ مدیریت تسک‌ها و اعضای تیم
-- ✅ حضور و غیاب روزانه
-- ✅ گزارش‌دهی روزانه
-- ✅ سیستم اخطاردهی
-- ✅ تقویم و مدیریت مرخصی
-- ✅ اتصال به Telegram Bot
-- ✅ داشبورد گرافیکی
+### Backend
 
-## 📋 پیش‌نیازها
+- Python 3.10+
+- pip
 
-### Backend:
-- Python 3.10 یا بالاتر
-- pip (Python Package Manager)
+### Frontend
 
-### Frontend:
-- Node.js 18 یا بالاتر
-- npm (Node Package Manager)
+- Node.js 18+
+- npm
 
-### اختیاری:
-- PostgreSQL (برای استفاده از دیتابیس PostgreSQL)
-- Git (برای clone کردن پروژه)
+### Optional
 
----
+- PostgreSQL
+- Git
 
-## 📦 نصب و راه‌اندازی
+## Installation
 
-### 1. Clone یا دانلود پروژه
+### 1. Clone the repository
 
 ```powershell
 git clone <repository-url>
-cd Team_management
+cd Team-mangment-app
 ```
 
-### 2. نصب Backend
+### 2. Backend
 
 ```powershell
-# ایجاد Virtual Environment
 python -m venv venv
-
-# فعال‌سازی Virtual Environment
 .\venv\Scripts\activate
-
-# نصب پکیج‌ها
 pip install --upgrade pip
 pip install -r requirements.txt
-
-# اعمال Migrations
 python manage.py migrate
-
-# ایجاد Superuser
 python manage.py createsuperuser
 ```
 
-### 3. نصب Frontend
+### 3. Frontend
 
 ```powershell
 cd team_management_frontend
 npm install
 ```
 
-### 4. تنظیمات
+### 4. Configuration
 
-#### تنظیم Telegram Bot:
-در `core/settings.py` یا متغیرهای محیطی:
-```python
-TELEGRAM_BOT_TOKEN = 'your-bot-token'
-TELEGRAM_GROUP_CHAT_ID = 'your-group-chat-id'
-```
+Set environment variables (or update `core/settings.py` for local development):
 
-#### تنظیم Proxy (برای ایران):
-پروکسی `127.0.0.1:2080` به صورت پیش‌فرض در کد تنظیم شده است.
+- `SECRET_KEY` — Django secret key
+- `TELEGRAM_BOT_TOKEN` — Telegram bot token (if using the bot)
+- `TELEGRAM_GROUP_CHAT_ID` — Telegram group chat ID (if using the bot)
 
----
+For the frontend API URL, set `VITE_API_BASE_URL` (defaults to `http://127.0.0.1:8000/api/`).
 
-## 🏃 اجرای پروژه
+## Running locally
 
-### Development Mode
+### Backend
 
-#### Backend:
 ```powershell
 python manage.py runserver
 ```
-Backend روی `http://127.0.0.1:8000` اجرا می‌شود.
 
-#### Frontend:
+API: `http://127.0.0.1:8000`
+
+### Frontend
+
 ```powershell
 cd team_management_frontend
 npm run dev
 ```
-Frontend روی `http://localhost:5173` اجرا می‌شود.
 
-### Production Mode
+App: `http://localhost:5173`
 
-#### Backend (با Waitress):
-```powershell
-pip install waitress
-waitress-serve --host=0.0.0.0 --port=8000 core.wsgi:application
-```
+### Production build (frontend)
 
-#### Frontend:
 ```powershell
 cd team_management_frontend
 npm run build
 ```
-فایل‌های build شده در `dist` قرار می‌گیرند.
 
----
+Output is in `team_management_frontend/dist`.
 
-## 📁 ساختار پروژه
+## Project structure
 
 ```
-Team_management/
-├── requirements.txt              # پکیج‌های Python
-├── manage.py                     # Django management
-├── DEPLOYMENT.md                 # راهنمای کامل deployment
-├── INSTALL.md                    # راهنمای نصب سریع
-├── core/                         # تنظیمات اصلی Django
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── accounts/                     # مدیریت کاربران
-├── tasks/                        # مدیریت تسک‌ها
-├── reports/                      # گزارش‌ها و حضور و غیاب
-├── warningss/                    # سیستم اخطاردهی
-├── calendar_events/              # تقویم و مرخصی
-├── bot/                          # Telegram Bot
-├── bot_scheduler/                # زمان‌بندی وظایف
-└── team_management_frontend/     # Frontend React
-    ├── package.json              # پکیج‌های Node.js
-    ├── src/
-    └── dist/                     # فایل‌های build شده
+├── requirements.txt
+├── manage.py
+├── core/                    # Django settings and URLs
+├── accounts/
+├── tasks/
+├── reports/
+├── warningss/
+├── calendar_events/
+├── bot/
+├── bot_scheduler/
+└── team_management_frontend/
 ```
 
----
+## Security (production)
 
-## 🔧 پکیج‌های اصلی
+1. Use a strong `SECRET_KEY` from the environment.
+2. Set `DEBUG = False`.
+3. Restrict `ALLOWED_HOSTS` and CORS to your domains.
+4. Never commit secrets or bot tokens to version control.
 
-### Backend (Python):
-- Django 5.2.7
-- Django REST Framework
-- django-cors-headers
-- django-apscheduler
-- requests
+## Additional documentation
 
-### Frontend (Node.js):
-- React 19.2.0
-- React Router DOM
-- Axios
-- Tailwind CSS
-- Vite
-
----
-
-## 📝 دستورات مفید
-
-### Backend:
-```powershell
-python manage.py migrate          # اعمال migrations
-python manage.py makemigrations    # ایجاد migrations جدید
-python manage.py createsuperuser  # ایجاد مدیر
-python manage.py check            # بررسی تنظیمات
-python manage.py collectstatic    # جمع‌آوری فایل‌های static
-```
-
-### Frontend:
-```powershell
-npm install          # نصب dependencies
-npm run dev          # اجرای development server
-npm run build        # build برای production
-npm run preview      # preview فایل‌های build شده
-```
-
----
-
-## 🔐 تنظیمات امنیتی
-
-برای production حتماً:
-
-1. **SECRET_KEY** را تغییر دهید:
-```python
-SECRET_KEY = os.environ.get('SECRET_KEY', 'generate-new-key')
-```
-
-2. **DEBUG** را روی `False` بگذارید:
-```python
-DEBUG = False
-```
-
-3. **ALLOWED_HOSTS** را تنظیم کنید:
-```python
-ALLOWED_HOSTS = ['your-domain.com', 'your-ip']
-```
-
-4. **CORS** را محدود کنید:
-```python
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['https://your-domain.com']
-```
-
----
-
-## 📚 مستندات بیشتر
-
-- [DEPLOYMENT.md](./DEPLOYMENT.md) - راهنمای کامل deployment
-- [INSTALL.md](./INSTALL.md) - راهنمای نصب سریع
-
-## 📄 لایسنس
-
-این پروژه برای استفاده داخلی تیم Batltazar Plus طراحی شده است.
-
+- [DEPLOYMENT.md](./DEPLOYMENT.md)
+- [INSTALL.md](./INSTALL.md)
+- [QUICK_START.md](./QUICK_START.md)

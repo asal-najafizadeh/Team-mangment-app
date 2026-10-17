@@ -76,15 +76,15 @@ const Login = () => {
           <div className="flex justify-center mb-2">
             <img 
               src="/logo.png" 
-              alt="Batltazar Plus Logo" 
+              alt="Team Management" 
               className="w-16 h-16 object-contain"
             />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-1 drop-shadow-lg">
-            Batltazar Plus
+            Team Management
           </h1>
           <p className="text-base md:text-lg text-white/90 font-medium mb-3 drop-shadow-md">
-            صفحه ورود کاربران تیم بالتازار پلاس
+            ورود به سیستم مدیریت تیم
           </p>
           <div className="h-1 w-24 bg-white/30 mx-auto rounded-full"></div>
         </div>

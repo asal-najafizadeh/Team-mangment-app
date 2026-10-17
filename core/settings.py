@@ -126,22 +126,19 @@ CORS_ALLOW_ALL_ORIGINS = True  # TODO: Set to False in production
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://team-management-frontend.vercel.app", # 👈 آدرس فرانت‌اند  در ورسل
 ]
 
-# برای درخواست‌های POST (مثل login) از فرانت‌اند
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://team-management-frontend.vercel.app", # 👈 آدرس فرانت‌اند شما در ورسل
 ]
 
 
 # ⚠️ TELEGRAM BOT CONFIGURATION ⚠️
 # Load from environment variables if available, otherwise use defaults
 import os
-TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '8461992103:AAF6XzqmTw1IyE7NVrir_PucCUva0CusSPE')
-TELEGRAM_GROUP_CHAT_ID = os.environ.get('TELEGRAM_GROUP_CHAT_ID', '-1002259543237')
+TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+TELEGRAM_GROUP_CHAT_ID = os.environ.get('TELEGRAM_GROUP_CHAT_ID', '')
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25

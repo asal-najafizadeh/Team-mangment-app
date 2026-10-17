@@ -17,7 +17,7 @@ const Footer = ({ isLoginPage = false }) => {
       }}
     >
       <div className={`flex items-center ${isLoginPage ? 'justify-center' : 'justify-end'} space-x-reverse space-x-1`}>
-        <span className={isLoginPage ? '' : 'opacity-60'}> تمام اطلاعات این سیستم مفحوظ به بالتازار پلاس است </span>
+        <span className={isLoginPage ? '' : 'opacity-60'}>© Asal Najafizadeh</span>
       </div>
     </footer>
   );
